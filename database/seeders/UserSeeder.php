@@ -28,9 +28,11 @@ class UserSeeder extends Seeder
         // );
 
         for($i=0; $i<50; $i++) {
+            $angkatan = rand(22,25);
+            $urutan = 10+$i;
             DB::table('users')->insert(
                 [
-                    'npm' => ('5520' + (string)rand(123,125) + (string)range(001,050)),
+                    'npm' => "55201{$angkatan}0{$urutan}",
                     'username' => $faker->userName(),
                     'first_name' => $faker->firstName(),
                     'last_name' => $faker->lastName(),

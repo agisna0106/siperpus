@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->renameColumn('id', 'npm');
+            $table->renameColumn('id', 'npm')->primary();
             $table->renameColumn('name', 'username');
             $table->string('first_name', 64)->after('username');
             $table->string('last_name', 64)->after('first_name');
