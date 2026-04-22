@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('returns', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('load_detail_id')->constrained('loan_detail', 'id');
+            $table->foreignId('loan_detail_id')->constrained('loan_detail', 'id')
+            ;
             $table->boolean('charge');
             $table->integer('amount');
             $table->timestamps();
