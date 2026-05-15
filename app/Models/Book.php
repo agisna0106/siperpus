@@ -12,12 +12,17 @@ class Book extends Model
         'year',
         'publisher',
         'city',
-        'cover',
-        'bookshelf_id'
+        'category_id',
+        'bookshelf_id',
+        'cover'
     ];
 
     public function bookshelf() {
         return $this->belongsTo(Bookshelf::class);
+    }
+
+    public function category() {
+        return $this->belongsTo(Category::class);
     }
 
     public function loadDetails() {

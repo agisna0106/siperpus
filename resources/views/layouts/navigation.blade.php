@@ -30,10 +30,10 @@
                         {{ __('Peminjaman') }}
                     </x-nav-link>
                 </div>
-                
+
                 <!-- Books -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('books')">
+                    <x-nav-link :href="route('books')" :active="request()->routeIs('books')">
                         {{ __('Buku') }}
                     </x-nav-link>
                 </div>

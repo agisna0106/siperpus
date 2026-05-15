@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('publisher', 64);
             $table->string('city', 32);
             $table->string('cover')->nullable();
+            $table->foreignId('category_id')->constrained();
             //cara1
             // $table->foreignId('bookshelf_id')->constrained();
 
