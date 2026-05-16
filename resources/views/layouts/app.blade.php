@@ -1,3 +1,4 @@
+@use('SweetAlert2\Laravel\Swal')
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -11,6 +12,54 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        <script type="module">
+            document.addEventListener('DOMContentLoaded', function () {
+                document.querySelectorAll('.delete-form').forEach(form => {
+
+                    form.addEventListener('submit', function(e) {
+
+                        e.preventDefault();
+
+                        Swal.fire({
+                            title: 'Yakin?',
+                            text: "Data yang dihapus tidak bisa dikembalikan!",
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Ya, hapus!',
+                            cancelButtonText: 'Batal'
+                        }).then((result) => {
+
+                            if (result.isConfirmed) {
+                                form.submit();
+                            }
+
+                        });
+
+                    });
+
+                });
+            });
+        </script>
+
+        @if(session('success'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil',
+                    text: '{{ session('success') }}',
+                    timer: 2000,
+                    showConfirmButton: false
+                });
+
+            });
+        </script>
+        @endif
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])

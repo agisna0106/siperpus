@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -24,6 +25,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/books/{id}/edit', [BookController::class, 'edit'])->name('books.edit');
     Route::match(['put', 'patch'], '/books/{id}', [BookController::class, 'update'])->name('books.update');
     Route::delete('/books/{id}', [BookController::class, 'destroy'])->name('books.destroy');
+
+    //Categories
+    Route::resource('categories', CategoryController::class);
+    Route::match(['put', 'patch'], '/categories/{id}', [BookController::class, 'update'])->name('categories.update');
 });
 
 require __DIR__.'/auth.php';

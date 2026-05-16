@@ -48,7 +48,7 @@
                         <td>{{ $book->bookshelf->code }}-{{ $book->bookshelf->name }}</td>
                         <td class="flex flex-auto">
                             <a href="{{ route('books.edit', $book->id) }}" class="flex items-center justify-center h-20"><i class="fa-solid fa-pencil"></i></a>
-                            <form action="{{ route('books.destroy', $book->id) }}" method="post" onsubmit="return confirm('Apakah anda yakin?');">
+                            <form action="{{ route('books.destroy', $book->id) }}" method="post" class="delete-form">
                                 @csrf
                                 @method('delete')
                                 <x-danger-button type="submit" class="flex items-center justify-center h-20"><i class="fa-solid fa-trash text-red-600 ml-1"></i></x-danger-button>
