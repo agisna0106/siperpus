@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\BookshelfController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -29,6 +30,9 @@ Route::middleware('auth')->group(function () {
     //Categories
     Route::resource('categories', CategoryController::class);
     Route::match(['put', 'patch'], '/categories/{id}', [BookController::class, 'update'])->name('categories.update');
+
+    //Bookshelves
+    Route::resource('bookshelves', BookshelfController::class);
 });
 
 require __DIR__.'/auth.php';
